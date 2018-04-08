@@ -62,6 +62,6 @@ events, such as an uptick in new friends when the user moves, starts college, or
 
 ## Future Directions
 
-+ We made the parsing code reusable, so new users can quickly use our tool by simply downloading their data directory and receive the appropriate output CSV files.
++ We made the parsing code modular, so new users can quickly use our tool by simply downloading their data directory and receive the appropriate output CSV files.
 + More complex mathematical operations could provide further insights on time-series data (clustering, classification, etc.)
 + Analyzing more sections of Facebook data would involve writing parsing logic for the appropriate `.htm` files and creating new Splunk rules to manage the ingest of the appropriate parsed `.csv` files.
