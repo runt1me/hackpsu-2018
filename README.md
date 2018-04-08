@@ -4,7 +4,7 @@ We made a tool to help you understand the breadth of data Facebook collects and 
 
 ## How it Works
 
-In the wake of recent news of data leakage on Facebook, a tool was created to allow you to download a dataset containing
+In the wake of recent news of data leakage on Facebook, Facebook released a tool to allow you to download a dataset containing
 personal profile information stored by Facebook. Our tool parses some of this dataset and performs certain analytics to help
 the user make sense of the vast swaths of data.
 
