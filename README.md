@@ -49,3 +49,17 @@ events, such as an uptick in new friends when the user moves, starts college, or
 ![Friend Graph](https://github.com/runt1me/hackpsu-2018/raw/master/pics/Facebook_Data_Metrics.png "friend info")
 
 *The spikes in the graph tend to correspond to major life events.*
+
+## Challenges & Limitations
+
++ Facebook delivers the data as a `.htm` file. As a result, parsing the data into an ingestable format is an involved task. Sometimes, parsing logic is reusable; sometimes it isn't. A small change to the `.htm` file could result in a substantial amount of code changes required to parse the data.
++ Splunk has an ingest limit of 500 Mb/day for free accounts, so we were limited in the amount of data that we could analyze in our 24-hour timeframe.
++ Since we only used our own Facebook data, and we are similar in many demographics (age, gender, vocation..), we ended up analyzing a fairly homogenous dataset.
++ Our Splunk instance is managed on one of our own laptops, so processing power for advanced data analytics is limited.
++ Due to the serious privacy concerns associated with this data, we limited the ability to drilldown with certain features (location, friends' names)
+
+## Future Directions
+
++ We made the parsing code reusable, so new users can quickly use our tool by simply downloading their data directory and receive the appropriate output CSV files.
++ More complex mathematical operations could provide further insights on time-series data (clustering, classification, etc.)
++ Analyzing more sections of Facebook data would involve writing parsing logic for the appropriate `.htm` files and creating new Splunk rules to manage the ingest of the appropriate parsed `.csv` files.
