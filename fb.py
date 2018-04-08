@@ -1,26 +1,27 @@
 import re
 import requests
 from datetime import datetime
+import argparse
 
-def main():
+def main(facebook_data_dir, name):
     print 'fb dataset parser'
     security = True
-    friends = False
-
-    #facebook_data_dir = "facebook-brettwaugh16"
-    facebook_data_dir = "facebook-ryanthomas39545464"
+    friends = True
 
     if security:
         security_file_path = facebook_data_dir + "/html/security.htm"
-        parse_security_file(security_file_path)
+        parse_security_file(security_file_path, name)
 
     if friends:
         friends_file_path = facebook_data_dir + "/html/friends.htm"
-        parse_friends_file(friends_file_path)
+        parse_friends_file(friends_file_path, name)
 
-def parse_security_file(security_file_path):
-    ip_geo_csv = open('ip_geo_ryan.csv', 'w')
-    active_sessions_csv = open('active_sessions_ryan.csv', 'w')
+def parse_security_file(security_file_path, name):
+    ip_geo_file_name = 'ip_geo_%s.csv' % name
+    active_sessions_file_name = 'active_sessions_%s.csv' % name
+	
+    ip_geo_csv = open(ip_geo_file_name, 'w')
+    active_sessions_csv = open(active_sessions_file_name, 'w')
 
     with open(security_file_path, 'r') as security_file:
         lines = security_file.read().split('\n')
@@ -93,11 +94,16 @@ def parse_all_ips(ip_geo_csv, ip_section):
         print '(%s, %s): %s' % (latitude, longitude, city)
         ip_geo_csv.write('%s,%s,%s\n' % (ip_addr, latitude, longitude))
 
-def parse_friends_file(friends_file_path):
-    friends_csv = open('friends_ryan.csv', 'w')
-    sent_friend_requests_csv = open('sent_friends_requests_ryan.csv', 'w')
-    declined_friend_requests_csv = open('declined_friends_requests_ryan.csv', 'w')
-    removed_friends_csv = open('removed_friends_ryan.csv', 'w')
+def parse_friends_file(friends_file_path, name):
+    friends_file_name = 'friends_%s.csv' % name
+    sent_friend_requests_file_name = 'sent_friends_requests_%s.csv' % name
+    declined_friend_requests_file_name = 'declined_friends_requests_%s.csv' % name
+    removed_friends_file_name = 'removed_friends_%s.csv' % name
+
+    friends_csv = open(friends_file_name, 'w')
+    sent_friend_requests_csv = open(sent_friend_requests_file_name, 'w')
+    declined_friend_requests_csv = open(declined_friend_requests_file_name, 'w')
+    removed_friends_csv = open(removed_friends_file_name, 'w')
 
     with open(friends_file_path, 'r') as friends_file:
         lines = friends_file.read().split('\n')
@@ -162,4 +168,11 @@ def __get_current_year():
     return datetime.now().year
 
 if __name__ == "__main__":
-    main()
+	ap = argparse.ArgumentParser()
+	ap.add_argument("-d", "--dir", required=True, help="name of the directory containing your Facebook data")
+	args = vars(ap.parse_args())
+
+	dir_name = args['dir']
+	user_name = dir_name.split('facebook-')[1]
+
+	main(dir_name, user_name)
