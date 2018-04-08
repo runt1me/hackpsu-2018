@@ -50,6 +50,8 @@ events, such as an uptick in new friends when the user moves, starts college, or
 
 *The spikes in the graph tend to correspond to major life events.*
 
+[See this guide for help installing Splunk.](http://docs.splunk.com/Documentation/Splunk/7.0.3/Installation/InstallonLinux)
+
 ## Challenges & Limitations
 
 + Facebook delivers the data as a `.htm` file. As a result, parsing the data into an ingestable format is an involved task. Sometimes, parsing logic is reusable; sometimes it isn't. A small change to the `.htm` file could result in a substantial amount of code changes required to parse the data.
