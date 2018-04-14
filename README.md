@@ -1,6 +1,9 @@
 # Deconstructing the Facebook data disaster
 
-We made a tool to help you understand the breadth of data Facebook collects and stores on its users. Check it out!
+For [HackPSU Spring 2018](https://hackpsu.org/), we made a tool to help you understand the breadth of data
+Facebook collects and stores on its users. Check it out!
+
+**UPDATE:** our project took **1st PLACE OVERALL!!** 
 
 ## How it Works
 
